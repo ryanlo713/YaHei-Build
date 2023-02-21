@@ -84,7 +84,7 @@ const latest = releases[0]
 if (!latest) throw new Error("cannot get latest ttf")
 
 console.log(`latest: ${JSON.stringify(latest, null, 2)}`)
-const asset = latest.assets.find(asset => asset.name === "AdvocateAncientSerifTTFs.7z")
+const asset = latest.assets.find(asset => asset.name === "AdvocateAncientSansTTFs.7z")
 if (!asset) throw new Error("cannot get latest ttf asset")
 console.log(`Serif latest tag: ${latest.name}`)
 const serifVersion = latest.tag_name
@@ -94,8 +94,8 @@ await download(dLink, `temp/${asset.name}`)
 await runProcess(["7z", "x", "-oserif", "-x!*.txt", `temp/${asset.name}`])
 
 
-const font = await getFontObject(`serif/AdvocateAncientSerifJP/AdvocateAncientSerifJP-Regular.ttf`)
-console.log(`get serif/AdvocateAncientSerifJP/AdvocateAncientSerifJP-Regular.ttf font object`)
+const font = await getFontObject(`serif/AdvocateAncientSansJP/AdvocateAncientSansJP-Regular.ttf`)
+console.log(`get serif/AdvocateAncientSans/AdvocateAncientSans-Regular.ttf font object`)
 // 宋体
 const simsunName = JSON.parse(Deno.readTextFileSync("simsun-name.json"))
 font["name"] = simsunName
