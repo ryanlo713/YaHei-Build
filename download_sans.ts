@@ -28,8 +28,8 @@ Deno.mkdirSync("source")
 
 await runProcess(["7z", "x", "-osource", "-x!*.txt", `temp/${asset.name}`])
 
-const fonts = Deno.readDirSync(`source/AdvocateAncientSansJP`)
+const fonts = Deno.readDirSync(`source/AdvocateAncientSans`)
 await Deno.mkdir("data")
 for (const font of fonts) {
-    Deno.copyFileSync(`source/AdvocateAncientSansJP/${font.name}`, `data/${font.name}`)
+    Deno.copyFileSync(`source/AdvocateAncientSans/${font.name}`, `data/${font.name}`)
 }
