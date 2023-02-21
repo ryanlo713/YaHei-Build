@@ -33,8 +33,8 @@ export async function listDir(currentPath: string): Promise<string[]> {
 
 export const otfccdump = "bin/otfccdump"
 export const otfccbuild = "bin/otfccbuild"
-export const AAJP_SANS = "AdvocateAncientJPSans"
-export const AAJP_Serif = "AdvocateAncientJPSerif"
+export const AAJP_SANS = "AdvocateAncientSans"
+export const AAJP_Serif = "AdvocateAncientSans"
 
 export async function buildOtf(outputFileName: string, jsonFile: string): Promise<void> {
     await runProcess([otfccbuild, "--keep-modified-time", "--keep-average-char-width", "-O3", "-q", "-o", outputFileName, jsonFile])
