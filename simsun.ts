@@ -80,7 +80,7 @@ const releases: Array<GithubRelease> = (await (await fetch(api)).json()).sort((a
 console.log(`releases: ${releases.map(release => release.name).join("\n")}`)
 
 
-const latest = releases[0]
+const latest = releases[1]
 if (!latest) throw new Error("cannot get latest ttf")
 
 console.log(`latest: ${JSON.stringify(latest, null, 2)}`)
