@@ -1,8 +1,7 @@
 name: build msyh
 on:
   push:
-    branches:
-      - build
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
 
