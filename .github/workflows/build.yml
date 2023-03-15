@@ -45,7 +45,7 @@ jobs:
     - name: Upload release
       uses: ncipollo/release-action@v1
       with:
-        token: "${{ secrets.GITHUB_TOKEN }}"
+        token: "${{ secrets.G_TOKEN }}"
         body: ""
         tag: "YAHEI-${{env.SANS_VERSION}}-UI-${{env.SANS_UI_VERSION}}-S-${{env.SERIF_VERSION}}"
         artifacts: YaHei.zip
