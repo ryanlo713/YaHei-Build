@@ -14,6 +14,7 @@ jobs:
         sudo apt install -y git curl p7zip unzip tree
         curl -fsSL https://deno.land/install.sh | sh
         realpath ~/.deno/bin/deno
+        echo `realpath ~/.deno/bin` >> $GITHUB_PATH
         ~/.deno/bin/deno help
         pip install afdko
         pip install fonttools
