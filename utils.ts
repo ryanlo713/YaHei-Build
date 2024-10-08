@@ -194,4 +194,4 @@ export async function unzip(zipFile: string, dest: string): Promise<string | fal
     return decompress(zipFile, dest)
 }
 
-export const toWinFontsToolPath =`tools/toWinFonts/toWinFonts-main/main/winfont.py`
+export const toWinFontsToolPath =`tools/toWinFonts/toWinFonts-main/main/weiwei.py`
