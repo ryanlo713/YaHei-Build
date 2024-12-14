@@ -3,21 +3,21 @@ import {downloadFromGithubLatestRelease, runProcess, writeToGithubEnv} from "./u
 await Deno.mkdir("temp")
 {
 
-    const {tag_name, file_name} = await downloadFromGithubLatestRelease("GuiWonder/Shanggu",
-        "ShangguSansTTFs.7z")
+    const {tag_name, file_name} = await downloadFromGithubLatestRelease("be5invis/Sarasa-Gothic",
+        "SarasaUiCL-TTF-1.0.25.7z")
 
     await writeToGithubEnv([
-        {key: "SANS_VERSION", value: tag_name},
-        {key: "SANS_UI_VERSION", value: tag_name}
+        {key: "SANS_VERSION", value: `Sarasa-${tag_name}`},
+        {key: "SANS_UI_VERSION", value: `Sarasa-${tag_name}`}
     ])
     Deno.mkdirSync("source")
 
     await runProcess(["7z", "x", "-osource", `temp/${file_name}`])
 
-    const sansFonts = Deno.readDirSync(`source/ShangguSansJP`)
+    const sansFonts = Deno.readDirSync(`source/`)
     await Deno.mkdir("sans")
     for (const font of sansFonts) {
-        const src = `source/ShangguSansJP/${font.name}`
+        const src = `source/${font.name}`
         if (src.includes("HW") || src.includes(".txt") || src.includes("Normal")) continue
         const dest = `sans/${font.name}`
         console.log(`copy ${src} to ${dest}`)
@@ -42,6 +42,6 @@ await Deno.mkdir("temp")
 
     await writeToGithubEnv([{
         key: "SERIF_VERSION",
-        value: tag_name
+        value: `Shanggu-${tag_name}`
     }])
 }
