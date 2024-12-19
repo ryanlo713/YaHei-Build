@@ -1,4 +1,4 @@
-import {download, listDir, runProcess, unzip} from "./utils.ts";
+import {download, listDir, runProcess} from "./utils.ts";
 
 Deno.mkdirSync("tools", {mode: 0o755})
 
@@ -8,7 +8,7 @@ await download(toWinToolsUrl, "tools/toWinFonts.zip")
 
 Deno.mkdirSync("tools/toWinFonts")
 
-await unzip("tools/toWinFonts.zip", "tools/toWinFonts")
+await runProcess(["7z", "x", "-otools/toWinFonts", "tools/toWinFonts.zip"])
 
 for (const file in await listDir("tools/toWinFonts")) {
     console.log(`tool file: ${file}`)

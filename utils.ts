@@ -187,11 +187,5 @@ export interface GithubRelease {
     body: string;
     reactions: Reactions;
 }
-import {
-    decompress
-} from "https://deno.land/x/zip/mod.ts";
-export async function unzip(zipFile: string, dest: string): Promise<string | false> {
-    return decompress(zipFile, dest)
-}
 
 export const toWinFontsToolPath =`tools/toWinFonts/WeiFonts-main/files/weiwin.py`
