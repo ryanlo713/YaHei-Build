@@ -4,7 +4,7 @@ await Deno.mkdir("temp")
 {
 
     const {tag_name, file_name} = await downloadFromGithubLatestRelease("be5invis/Sarasa-Gothic",
-        "SarasaUiCL-TTF-1.0.25.7z")
+        "SarasaGothicCL-TTF-(?!Unhinted).*\\.7z")
 
     await writeToGithubEnv([
         {key: "SANS_VERSION", value: `Sarasa-${tag_name}`},
@@ -27,7 +27,7 @@ await Deno.mkdir("temp")
 
 {
     const {tag_name, file_name}  = await downloadFromGithubLatestRelease("GuiWonder/Shanggu",
-        "ShangguSerifTTFs.7z")
+        "ShangguSerifTTFs\\.7z")
     await runProcess(["7z", "x", "-osource", `temp/${file_name}`])
 
     await Deno.mkdir("serif")

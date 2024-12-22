@@ -68,7 +68,7 @@ export function readEnv(key: string): string | undefined {
     return (value === "undefined" || !value) ? undefined : value
 }
 
-export const downloadFromGithubLatestRelease = async (repo: string, fileName: string) => {
+export const downloadFromGithubLatestRelease = async (repo: string, fileNameRegex: string) => {
     const api = `https://api.github.com/repos/${repo}/releases`
     const releases: Array<GithubRelease> = (await (await fetch(api)).json()).sort((a: GithubRelease, b: GithubRelease) =>
         Date.parse(b.published_at) - Date.parse(a.published_at))
@@ -79,7 +79,8 @@ export const downloadFromGithubLatestRelease = async (repo: string, fileName: st
     if (!latest) throw new Error("cannot get latest release")
 
     console.log(`latest: ${JSON.stringify(latest, null, 2)}`)
-    const asset = latest.assets.find(asset => asset.name === fileName)
+    const regex = new RegExp(fileNameRegex);
+    const asset = latest.assets.find(asset => regex.test(asset.name))
     if (!asset) {
         console.log("can't find asset")
         throw new Error("cannot get latest ttf asset")
